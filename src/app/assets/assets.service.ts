@@ -15,4 +15,10 @@ export class AssetsService {
   public postAsset(data) {
     return this.httpClient.post<any>(this.contextUrl, data);
   }
+  public registerUserOnDevice(data){
+    return this.httpClient.post<any>(this.contextUrl, data);
+  }
+  public getOwnerDetails() {
+    return this.httpClient.get<any>(`${environment.api.url}/participants`)
+  }
 }
