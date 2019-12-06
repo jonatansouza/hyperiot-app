@@ -14,7 +14,7 @@
 				{{assetDetail?.description}}
 			</p>
 			<p class="label">Token de autenticação
-				<a (click)="toggleToken = !toggleToken">
+				<a class="token-container" title="Revelar token" (click)="toggleToken = !toggleToken">
 					<i class="material-icons">
 						remove_red_eye
 					</i>
@@ -30,8 +30,9 @@
 				{{assetDetail?.registered |  date : 'short'}}
 			</p>
 			<p class="label">Usuários autorizados</p>
+			<p *ngIf="(assetDetail.allowedUsers || []).length <= 1">Nenhum usuário autorizado para esse dispositivo.</p>
 			<ul class="allowed-user-list">
-				<li *ngFor="let item of (assetDetail.allowedUsers || [])">
+				<li *ngFor="let item of filterAllowedUsers()">
                     <span>{{getEmail(item)}}</span>
 					<a (click)="removeUser(item)">
 						<i class="material-icons">

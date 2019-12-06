@@ -1,4 +1,17 @@
 .asset-container {
+    .token-container {
+      display: inline-block;
+      position: relative;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      i {
+        position: absolute;
+      }
+      i:hover {
+        color: #673ab7;
+      }
+    }
     .allowed-user-list{
         text-decoration: none;
         width: 50%;
