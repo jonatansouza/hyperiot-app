@@ -1,0 +1,34 @@
+<mat-drawer-container class="app-wrapper" autosize>
+    <mat-drawer #drawer class="app-sidenav" mode="over" hasBackdrop="true">
+        <ul class="app-sidenav-list">
+            <li>
+                <a [routerLink]="[ '/participantes' ]" (click)="drawer.close()">Participantes</a>
+            </li>
+            <li>
+                <a [routerLink]="[ '/dispositivos' ]" (click)="drawer.close()">Dispositivos</a>
+            </li>
+            <li>
+                <a (click)="logout()">Sair</a>
+            </li>
+        </ul>
+    </mat-drawer>
+    <div class="app-container">
+        <mat-toolbar color="primary">
+            <div class="app=sidenav-content">
+                <a (click)="drawer.toggle()">
+                  <i class="material-icons">
+                    menu
+                  </i>
+                </a>
+              </div>
+        </mat-toolbar>
+        <div class="content">   
+            <div class="breadcrumb-wrapper" [hidden]="!breadcrumbs || breadcrumbs.length < 2 || isInLogin()">
+                <a (click)="navTo(breadcrumb.url)" *ngFor="let breadcrumb of breadcrumbs; let isLast = last">{{breadcrumb.txt}}
+                    <span *ngIf="!isLast"> > </span>
+                </a>
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+  </mat-drawer-container>

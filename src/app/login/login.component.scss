@@ -1,0 +1,39 @@
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    img {
+        max-width: 30vw;
+    }
+}
+.login-container {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    max-width: 400px;
+    .logo-container {
+        align-self: center;
+        width: 20vw;
+        margin-bottom: 1em;
+    }
+}
+.button-next {
+    margin-top: 2em;
+}
+@media only screen and (max-width: 600px) {
+    .login-wrapper {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        mat-form-field{
+            width: 100%;
+        }
+        .login-container{
+            width: 80%;
+        }
+        .logo-container {
+            align-self: center;
+            width: 100%;
+        }
+    }    
+}

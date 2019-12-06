@@ -1,0 +1,46 @@
+<div class="participant-container">
+    <button mat-fab class="plus-btn" (click)="registerUser()">+</button>
+    <h2>Usuários Autorizados</h2>
+	<mat-spinner diameter=50 *ngIf="loading"></mat-spinner>
+	<mat-card class="form-card mat-elevation-z8 animated fadeIn" *ngIf="!allowedUsers.length && !loading">
+		<mat-card-content class="card-content" [class.onesignal-opacity]="loadingReport">
+			<h3 class="info">
+				Não há usuários autorizados ainda.
+			</h3>
+			<p class="secondary">
+				Para cadastrar um novo usuário, clique no botão no canto superior direito.
+			</p>
+		</mat-card-content>
+	</mat-card>
+	<div class="table-wrapper animated fadeIn" *ngIf="allowedUsers.length && !loading">
+		<mat-table [dataSource]="allowedUsers" class="mat-elevation-z8">
+			<!-- Name Column -->
+			<ng-container matColumnDef="name">
+				<mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+				<mat-cell *matCellDef="let element">
+					{{element?.name | titlecase}}
+					<span class="secondary" *ngIf="!element?.name">Não informado</span>
+				</mat-cell>
+			</ng-container>
+			<!-- Name Column -->
+			<ng-container matColumnDef="email">
+				<mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+				<mat-cell *matCellDef="let element">
+					{{element?.email}}
+				</mat-cell>
+			</ng-container>
+			<ng-container matColumnDef="action">
+				<mat-header-cell *matHeaderCellDef> Remover </mat-header-cell>
+				<mat-cell *matCellDef="let element">
+					<a (click)="removeUser(element)">
+						<i class="material-icons">
+							delete
+						  </i>
+					</a>
+				</mat-cell>
+			</ng-container>
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+	</div>
+</div>

@@ -1,0 +1,53 @@
+.participant-container {
+    position: relative;
+    .form-card {
+      width: 35vw;
+      min-width: 500px;
+      position: relative;
+    }
+  
+    .card-content {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .card-footer {
+      display: flex;
+      justify-content: center;
+      button {
+        width: 50%;
+        margin-top: 5%;
+      }
+    }
+  }
+  .participant-progressbar-container {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    width: 35vw;
+    top: 50%;
+    span {
+      margin: 1em 0;
+    }
+  }
+  .participant-opacity {
+    opacity: 0.1;
+  }
+  @media only screen and (max-width: 600px) {
+    .participant-container {
+      padding: 2%;
+  
+      .form-card {
+        min-width: unset;
+        box-sizing: border-box;
+        width: 100%;
+      }
+      .participant-progressbar-container {
+        width: 90%;
+      }
+    }
+  }
+  

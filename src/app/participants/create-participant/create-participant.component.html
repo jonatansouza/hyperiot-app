@@ -1,0 +1,19 @@
+<div class="participant-container">
+	<mat-card class="form-card mat-elevation-z8 animated fadeIn">
+		<mat-card-title>Registro de usuário</mat-card-title>
+		<mat-card-subtitle>Autorização</mat-card-subtitle>
+		<mat-card-content class="card-content">
+			<mat-form-field>
+				<input matInput color="accent" [formControl]="userName" placeholder="Nome do usuário">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput color="accent" [formControl]="userEmail" placeholder="Email do usuário">
+			</mat-form-field>
+		</mat-card-content>
+		<mat-card-actions class="card-footer">
+			<mat-spinner diameter=50 *ngIf="loading"></mat-spinner>
+			<button mat-raised-button [disabled]="(!userEmail.valid || !userName.valid)"
+				color="accent" (click)="submitForm()" *ngIf="!loading">Cadastrar</button>
+		</mat-card-actions>
+	</mat-card>
+</div>

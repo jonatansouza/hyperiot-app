@@ -1,0 +1,49 @@
+<div class="asset-container">
+	<mat-card class="form-card mat-elevation-z8 animated fadeIn">
+		<mat-card-title>Detalhes do dispositivo</mat-card-title>
+		<mat-card-subtitle>Proprietário {{getEmail(assetDetail.owner)}}</mat-card-subtitle>
+		<mat-card-content class="card-content">
+			<p class="label">
+				Node do dispositivo
+			</p>
+			<p>
+				{{assetDetail?.name}}
+			</p>
+			<p class="label">Descrição</p>
+			<p>
+				{{assetDetail?.description}}
+			</p>
+			<p class="label">Token de autenticação
+				<a (click)="toggleToken = !toggleToken">
+					<i class="material-icons">
+						remove_red_eye
+					</i>
+				</a>
+			</p>
+			<p style="word-break: break-all">
+				{{toggleToken ? assetDetail?.token : '***************'}}
+			</p>
+			<p class="label">
+				Registro
+			</p>
+			<p>
+				{{assetDetail?.registered |  date : 'short'}}
+			</p>
+			<p class="label">Usuários autorizados</p>
+			<ul class="allowed-user-list">
+				<li *ngFor="let item of (assetDetail.allowedUsers || [])">
+                    <span>{{getEmail(item)}}</span>
+					<a (click)="removeUser(item)">
+						<i class="material-icons">
+							delete
+						</i>
+					</a>
+				</li>
+			</ul>
+		</mat-card-content>
+		<mat-card-actions class="card-footer">
+			<mat-spinner diameter=50 *ngIf="loading"></mat-spinner>
+			<button mat-raised-button color="accent" (click)="addUser()" *ngIf="!loading">Autorizar usuário</button>
+		</mat-card-actions>
+	</mat-card>
+</div>

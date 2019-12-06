@@ -1,0 +1,11 @@
+<div class="login-wrapper">
+  <div class="login-container">
+    <mat-form-field>
+      <input matInput placeholder="Login" [formControl]="username" color="accent" (keyup.enter)="login()">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Senha" [formControl]="passwd" type="password" color="accent" (keyup.enter)="login()">
+    </mat-form-field>
+    <button mat-flat-button color="primary" class="button-next" [disabled]="(!passwd.valid || !username.valid || !resolveCaptcha)" (click)="login()">Avançar</button>
+  </div>
+</div>
