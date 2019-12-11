@@ -48,9 +48,9 @@ export class AssetDetailComponent implements OnInit {
     });
   }
   filterAllowedUsers() {
-    (this.assetDetail.allowedUsers || []).filter(el => !this.assetDetail.owner);
+    return ((this.assetDetail.allowedUsers || []).filter(el => el !== this.assetDetail.owner)).map(el => this.getEmail(el));
   }
-  addUser(){
+  addUser() {
     const dialogRef = this.dialog.open(AssetDetailDialogComponent, {
       width: '500px',
       data: this.ownerList.map(el => el.email)

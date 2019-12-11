@@ -33,7 +33,7 @@
 			<p *ngIf="(assetDetail.allowedUsers || []).length <= 1">Nenhum usuário autorizado para esse dispositivo.</p>
 			<ul class="allowed-user-list">
 				<li *ngFor="let item of filterAllowedUsers()">
-                    <span>{{getEmail(item)}}</span>
+                    <span>{{item}}</span>
 					<a (click)="removeUser(item)">
 						<i class="material-icons">
 							delete
